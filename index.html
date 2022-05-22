@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Muhammad Azfa Asykarulloh" />
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <nav style="background: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 100%; position: fixed; height: 75px; top: 0;">
+    <div class="img-brand" style="display: inline-block; position: absolute; top: 10px; left: 20px;">
+      <img src="img/keys.png" alt="Math-in-Coding" style="width: 50px;" />
+    </div>
+    <div class="nav-title-left" style="display: inline-block; position: absolute; left: 80px;">
+      <h1>Math in Coding</h1>
+    </div>
+    <div class="nav-title-right" style="float: right; margin-right: 20px;">
+      <h1>Scientific Calculator</h1>
+    </div>
+  </nav>
+
+  <form name="sci-calc" style="margin-top: 120px;">
+    <div class="container">
+      <div class="display">
+        <input id="display" name="display" placeholder="0" size="28" maxlength="25">
+      </div>
+      <div class="flex-container-row">
+        <input type="button" class="btnTop" name="btnTop" value="C" onclick="this.form.display.value=  0 ">
+        <input type="button" class="btnMath" name="btnMath" value="&#177" onclick="changeSign(this.form.display)">
+        <input type="button" class="btnOpps" name="btnOpps" value="x&#178;" onclick="if(checkNum(this.form.display.value)) { square(this.form) }">
+        <input type="button" class="btnOpps" name="btnOpps" value="&#960;" onclick="addChar(this.form.display,'3.14159265359')">
+        <input type="button" class="btnMath" name="btnMath" value="sin" onclick="if(checkNum(this.form.display.value)) { sin(this.form) }">
+      </div>
+      <div class="flex-container-row">
+        <input type="button" class="btnMath" name="btnMath" value="(" onclick="addChar(this.form.display, '(')">
+        <input type="button" class="btnMath" name="btnMath" value=")" onclick="addChar(this.form.display,')')">
+        <input type="button" class="btnMath operator" name="btnMath" value="%" onclick=" percent(this.form.display)">
+        <input type="button" class="btnMath operator" name="btnMath" value="/" onclick="addChar(this.form.display, '/')">
+        <input type="button" class="btnMath" name="btnMath" value="cos" onclick="if(checkNum(this.form.display.value)) { cos(this.form) }">
+      </div>
+      <div class="flex-container-row">
+        <input type="button" class="btnNum" name="btnNum" value="7" onclick="addChar(this.form.display, '7')">
+        <input type="button" class="btnNum" name="btnNum" value="8" onclick="addChar(this.form.display, '8')">
+        <input type="button" class="btnNum" name="btnNum" value="9" onclick="addChar(this.form.display, '9')">
+        <input type="button" class="btnMath operator" name="btnMath" value="*" onclick="addChar(this.form.display, '*')">
+        <input type="button" class="btnMath" name="btnMath" value="tan" onclick="if(checkNum(this.form.display.value)) { tan(this.form) }">
+      </div>
+      <div class="flex-container-row">
+        <input type="button" class="btnNum" name="btnNum" value="4" onclick="addChar(this.form.display, '4')">
+        <input type="button" class="btnNum" name="btnNum" value="5" onclick="addChar(this.form.display, '5')">
+        <input type="button" class="btnNum" name="btnNum" value="6" onclick="addChar(this.form.display, '6')">
+        <input type="button" class="btnMath operator" name="btnMath" value="+" onclick="addChar(this.form.display, '+')">
+        <input type="button" class="btnOpps" name="btnOpps" value="&radic;" onclick="if(checkNum(this.form.display.value)) { sqrt(this.form) }">
+      </div>
+      <div class="flex-container-row">
+        <input type="button" class="btnNum" name="btnNum" value="1" onclick="addChar(this.form.display, '1')">
+        <input type="button" class="btnNum" name="btnNum" value="2" onclick="addChar(this.form.display, '2')">
+        <input type="button" class="btnNum" name="btnNum" value="3" onclick="addChar(this.form.display, '3')">
+        <input type="button" class="btnMath operator" name="btnMath" value="-" onclick="addChar(this.form.display, '-')">
+        <input type="button" class="btnOpps" name="btnOpps" value="x&#94;" onclick="if(checkNum(this.form.display.value)) { exp(this.form) }">
+      </div>
+      <div class="flex-container-row">
+        <input type="button" class="btnNum" name="btnNum" value="0" onclick="addChar(this.form.display, '0')">
+        <input type="button" class="btnMath" name="btnMath" value="&#46;" onclick="addChar(this.form.display, '&#46;')">
+        <button type="button" style="margin: 0 10px;" class="btnTop" name="btnTop" onclick="deleteChar(this.form.display)">
+          <i class="fa-solid fa-delete-left"></i>
+        </button>
+        <input type="button" class="btnTop operator" name="btnTop" value="=" onclick="if(checkNum(this.form.display.value)) { compute(this.form) }">
+        <input type="button" class="btnOpps" name="btnOpps" value="ln" onclick="if(checkNum(this.form.display.value)) { ln(this.form) }">
+      </div>
+    </div>
+  </form>
+
+  <div class="content" style="margin-top: 60px;">
+    <div class="profile" style="text-align: center;">
+      <img src="img/azfa.jpg" alt="Azfa" width="200" height="200" style="border-radius: 50%; object-fit: cover; border: 5px solid #ccc;" />
+      <h2>Muhammad Azfa Asykarulloh</h2>
+      <p style="margin-top: -10px; color: rgb(153, 153, 153);">Software Engineer</p>
+    </div>
+
+    <div class="description" style="max-width: 1000px; margin: 50px auto; line-height: 28px; text-align: justify; font-size: 20px;">
+      <p>Hello, my name is Muhammad Azfa Asykarulloh, but simply call me Azfa.</p>
+
+      <p>I am a Software Engineer, working for Microsoft and currently residing in Redmond, across the lake from Seattle. An alumna of SMK Negeri 1 Cianjur + Progress, Institute Technology Bandung</p>
+
+      <p>I love playing with data and programming, especially when it comes to data for greater corporation. Besides programming, sometimes I do web design and data analyst. You can see my portofolio here, my resume on LinkedIn, or my other writings on Medium.</p>
+
+      <p>Let’s keep in touch! Drop me a message at kangazfa [at] gmail.com [dot] com. See you there :)</p>
+
+      <hr style="display: block; position: relative; margin: 3rem 0; height: 1px; width: 8em; border: 0; background: #ccc;" />
+    </div>
+  </div>
+
+  <footer style="max-width: 1000px; margin: auto;">
+    <div class="social-media">
+      <a href="" style="border: 1px solid #ddd; padding: 8px 20px; font-size: .875rem; border-radius: 30px; text-decoration: none; color: black;"><i class="fa-brands fa-twitter"></i> Share on Twitter</a>
+      <a href="" style="border: 1px solid #ddd; padding: 8px 20px; font-size: .875rem; border-radius: 30px; text-decoration: none; color: black;"><i class="fa-brands fa-facebook-f"></i> Share on Facebook</a>
+      <a href="" style="border: 1px solid #ddd; padding: 8px 20px; font-size: .875rem; border-radius: 30px; text-decoration: none; color: black;"><i class="fa-brands fa-google-plus-g"></i> Share on Google</a>
+      <a href="" style="border: 1px solid #ddd; padding: 8px 20px; font-size: .875rem; border-radius: 30px; text-decoration: none; color: black;"><i class="fa-brands fa-linkedin"></i> Share on LinkedIn</a>
+    </div>
+    <div class="copyright" style="margin-top: 50px; margin-bottom: 50px;">
+      <p style="color: rgb(153, 153, 153);">&copy; Copyright 2022 Muhammad Azfa Asykarulloh powered by Microsoft and Google.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<!-- Source : https://codepen.io/ggetchell/pen/KVgrYq -->
