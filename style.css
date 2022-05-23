@@ -6,7 +6,8 @@ html {
   font-family: sans-serif;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -36,7 +37,7 @@ html, body {
   margin: 0 10px;
 }
 
-input[name=display] {
+input[name="display"] {
   width: 100%;
   border: none;
   outline: none;
@@ -47,7 +48,8 @@ input[name=display] {
   background: #eaeaea;
 }
 
-input[type=button], button {
+input[type="button"],
+button {
   flex-basis: 25%;
   border: none;
   padding: 20px;
@@ -58,8 +60,8 @@ input[type=button], button {
   background: #eaeaea;
 }
 
-input[type=button]:hover {
-  opacity: .7;
+input[type="button"]:hover {
+  opacity: 0.7;
 }
 
 input.operator {
@@ -69,6 +71,39 @@ input.operator {
 
 a:hover {
   color: white !important;
-  transition: .5s;
+  transition: 0.5s;
   background: black;
+}
+
+@media only screen and (max-width: 500px) {
+  nav .nav-title-right {
+    display: none;
+  }
+
+  .container,
+  .content,
+  footer {
+    width: 100%;
+  }
+
+  .flex-container-row {
+    margin: 5px 0;
+  }
+
+  input[type="button"] {
+    margin: 0 5px;
+  }
+
+  .content {
+    padding: 0 15px;
+  }
+
+  .social-media a {
+    display: block;
+    margin: 15px;
+  }
+
+  .copyright {
+    text-align: center;
+  }
 }
