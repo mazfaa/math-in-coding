@@ -86,6 +86,11 @@ a:hover {
     width: 100%;
   }
 
+  .content .description p,
+  footer .copyright p {
+    font-size: 14px;
+  }
+
   .flex-container-row {
     margin: 5px 0;
   }
@@ -110,5 +115,9 @@ a:hover {
   input[type="button"],
   button {
     font-size: 15px;
+  }
+
+  input[value="cos"] {
+    width: 62px;
   }
 }
